@@ -16,6 +16,7 @@ public class Main {
                 add task: ADD-TASK|TITLE|DESCRIPTION|DUE DATE
                 get task: GET-TASK|TASK ID
                 assign task: ASSIGN-TASK|TASK ID|USER ID
+                start task: START-TASK|TASK ID|USER ID
                 get recommended tasks: REC_TASKS|USER ID
                 see commands: COMS
                 end: END
@@ -39,7 +40,9 @@ public class Main {
             case "add-task" -> task.addTask(splitCommand[1], splitCommand[2], splitCommand[3]);
             case "get-task" -> task.getTask(splitCommand[1]);
             case "assign-task" -> task.assignTask(splitCommand[1], splitCommand[2]);
-//            case "REC-TASKS" -> task.recommendedTasks(splitCommand[1]);
+            case "start-task" -> task.startTask(splitCommand[1], splitCommand[2]);
+            case "complete-task" -> task.completeTask(splitCommand[1], splitCommand[2]);
+            case "rec-task" -> task.recommendedTasks(splitCommand[1]);
             case "end" -> end();
             default -> System.out.println("format not supported try again!");
         }
@@ -48,11 +51,12 @@ public class Main {
         System.out.println("""
                 add user: ADD-USER|NAME|EMAIL
                 show users: SHOW-USERS
-                add task: ADD-TASK|TITLE|DESCRIPTION|DUE DATE|USER ID
+                add task: ADD-TASK|TITLE|DESCRIPTION|DUE DATE
                 get task: GET-TASK|TASK ID
                 assign task: ASSIGN-TASK|TASK ID|USER ID
+                start task: START-TASK|TASK ID|USER ID
                 get recommended tasks: REC_TASKS|USER ID
-                see commands: CONS
+                see commands: COMS
                 end: END
                 """);
     }

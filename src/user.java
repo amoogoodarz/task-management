@@ -6,13 +6,29 @@ public class user {
     private String id;
     private String name;
     private String email;
+    private String score;
 
     public user(String id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
-
+    public user(String id, String name, String email, String score) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.score = score;
+    }
+    public String getScore(){
+        return score;
+    }
+    public String getId(){
+        return id;
+    }
+    @Override
+    public String toString(){
+        return id + "\t" + name + "\t" + email + "\t" + score;
+    }
     public static void addUser(String name, String email) {
         List <Object> objects = database.read("users", null);
         List <user> users = (List<user>) (Object) objects;
@@ -36,8 +52,8 @@ public class user {
             System.out.println("no user added so far");
             return;
         }
-        System.out.println("   USER ID\tUSER NAME\tUSER EMAIL");
+        System.out.println("   USER ID\tUSER NAME\tUSER EMAIL\tUSER SCORE");
         for(user u: users)
-            System.out.println(u.id + "\t" + u.name + "\t" + u.email);
+            System.out.println(u);
         }
 }

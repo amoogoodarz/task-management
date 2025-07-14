@@ -32,7 +32,8 @@ public class database {
                         CREATE TABLE users(
                             id SERIAL PRIMARY KEY,
                             name VARCHAR(64),
-                            email VARCHAR(64) UNIQUE);
+                            email VARCHAR(64) UNIQUE,
+                            score INTEGER DEFAULT 0);
                         """);
             }
             ResultSet taskTable = dbm.getTables(null, null, "tasks", null);
@@ -129,7 +130,8 @@ public class database {
                     String id = String.valueOf(resultSet.getInt("id"));
                     String name = resultSet.getString("name");
                     String email = resultSet.getString("email");
-                    user theUser = new user(id, name, email);
+                    String score = String.valueOf(resultSet.getInt("score"));
+                    user theUser = new user(id, name, email, score);
                     resultList.add(theUser);
                 }
             }else if(tableName.equals("tasks")){
